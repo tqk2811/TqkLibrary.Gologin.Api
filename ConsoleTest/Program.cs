@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json;
+using System.Diagnostics;
 using TqkLibrary.Gologin.Api;
 
 //acc abasda2c
@@ -15,6 +16,7 @@ while (string.IsNullOrWhiteSpace(access_token))
 using GologinApi gologinApi = new GologinApi(access_token);
 
 Directory.CreateDirectory("Preferences");
+Directory.CreateDirectory("Fingerprints");
 while (true)
 {
     ProfileResponse? profile = null;
@@ -22,6 +24,8 @@ while (true)
     {
         Console.WriteLine("Fingerprint.GetNew");
         var fingerprint = await gologinApi.Fingerprint.GetNew("win");
+        SaveFingerprint(fingerprint);
+
 
         ProfileConfig profileConfig = fingerprint.ConvertToProfileConfig();
 
@@ -39,10 +43,10 @@ while (true)
         GetProfilePreferences(profile.Id);
 
     }
-    catch(GologinException ge)
+    catch (GologinException ge)
     {
         Console.WriteLine($"{ge.GetType().FullName}: {ge.Message}");
-        foreach(var err in ge.GologinError.Errors)
+        foreach (var err in ge.GologinError.Errors)
         {
             Console.WriteLine($"\t-{err.Property}: {err.Messages}");
         }
@@ -69,6 +73,9 @@ while (true)
 
             profile = null;
         }
+        Console.WriteLine();
+        Console.WriteLine("---------------------------------------");
+        Console.WriteLine();
     }
 }
 
@@ -115,4 +122,17 @@ void GetProfilePreferences(string profileID)
     {
         Console.WriteLine($"Profile: {profileID}, Preferences not found");
     }
+}
+void SaveFingerprint(FingerprintResponse fingerprintResponse)
+{
+    int i = 0;
+    string fileName = string.Empty;
+    do
+    {
+        fileName = Path.Combine(Directory.GetCurrentDirectory(), "Fingerprints", $"{i:000000000}.json");
+        i++;
+    }
+    while (File.Exists(fileName));
+
+    File.WriteAllText(fileName, JsonConvert.SerializeObject(fingerprintResponse));
 }
