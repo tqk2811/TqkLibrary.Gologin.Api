@@ -10,7 +10,12 @@ namespace TqkLibrary.Gologin.Api
         public AudioContextMode Mode { get; set; } = AudioContextMode.noise;
 
         [JsonProperty("noise")]
-        public int Noise { get; set; } = Extensions.RandomNum;
+        public int? Noise { get; set; }
+
+        public override string ToString()
+        {
+            return $"Mode: {Mode}, Noise: {Noise}";
+        }
     }
 
 }

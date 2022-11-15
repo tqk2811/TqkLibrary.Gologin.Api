@@ -22,7 +22,7 @@ namespace TqkLibrary.Gologin.Api
         /// <param name="resolution"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<FingerprintResponse> GetNew(string os, string resolution, CancellationToken cancellationToken = default);
+        Task<FingerprintResponse> GetNew(string os, string resolution = null, CancellationToken cancellationToken = default);
     }
     internal class GologinFingerprintApi : IGologinFingerprintApi
     {
@@ -32,11 +32,12 @@ namespace TqkLibrary.Gologin.Api
             this.gologinApi = gologinApi ?? throw new ArgumentNullException(nameof(gologinApi));
         }
 
-        public async Task<FingerprintResponse> GetNew(string os, string resolution, CancellationToken cancellationToken = default)
+        public async Task<FingerprintResponse> GetNew(string os, string resolution = null, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrWhiteSpace(os)) throw new ArgumentNullException(nameof(os));
             NameValueCollection nameValueCollection = HttpUtility.ParseQueryString(string.Empty);
             nameValueCollection["os"] = os;
-            nameValueCollection["resolution"] = resolution;
+            if (!string.IsNullOrWhiteSpace(resolution)) nameValueCollection["resolution"] = resolution;
 
             using HttpRequestMessage httpRequestMessage = new HttpRequestMessage(
                 HttpMethod.Get,

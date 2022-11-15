@@ -33,7 +33,7 @@ namespace TqkLibrary.Gologin.Api
         public string Os { get; set; }
 
         [JsonProperty("devicePixelRatio")]
-        public double DevicePixelRatio { get; set; }
+        public double? DevicePixelRatio { get; set; }
 
         [JsonProperty("fonts")]
         public List<string> Fonts { get; set; }

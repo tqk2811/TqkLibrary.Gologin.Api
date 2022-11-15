@@ -7,10 +7,15 @@ namespace TqkLibrary.Gologin.Api
     {
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("mode")]
-        public ClientRectsMode Mode { get; set; } = ClientRectsMode.noise;
+        public ClientRectsMode? Mode { get; set; }
 
         [JsonProperty("noise")]
-        public int Noise { get; set; } = Extensions.RandomNum;
+        public int? Noise { get; set; }
+
+        public override string ToString()
+        {
+            return $"Mode: {Mode}, Noise: {Noise}";
+        }
     }
 
 }

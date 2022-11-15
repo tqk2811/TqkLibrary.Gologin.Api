@@ -24,10 +24,10 @@ namespace TqkLibrary.Gologin.Api
                     Proxy = null,
                     Navigator = new Navigator()
                     {
-                        DeviceMemory = Extensions.GetRandomParams(1, 2, 4, 6, 8),
-                        HardwareConcurrency = Extensions.GetRandomNum(1, 32),
+                        DeviceMemory = TqkLibrary.Gologin.Api.Extensions.GetRandomParams(1, 2, 4, 6, 8),
+                        HardwareConcurrency = TqkLibrary.Gologin.Api.Extensions.GetRandomNum(1, 32),
                         DoNotTrack = true,
-                        MaxTouchPoints = Extensions.GetRandomNum(1, 2),
+                        MaxTouchPoints = TqkLibrary.Gologin.Api.Extensions.GetRandomNum(1, 2),
                         Language = "en-US,en;q=0.9",
                         Platform = "Win32",
                         Resolution = "1600x900",
@@ -36,7 +36,6 @@ namespace TqkLibrary.Gologin.Api
                     Canvas = new Canvas(),
                     AudioContext = new AudioContext(),
                     ClientRects = new ClientRects(),
-                    ChromeExtensions = null,
                     //Storage = new Storage()
                     //{
                     //    Extensions = true,
@@ -50,7 +49,6 @@ namespace TqkLibrary.Gologin.Api
                     GoogleServicesEnabled = false,
                     LockEnabled = false,
                     Name = "New Profile",
-                    Profile = "ChromeWindow",
                     Plugins = new Plugins()
                     {
                         EnableFlash = false,

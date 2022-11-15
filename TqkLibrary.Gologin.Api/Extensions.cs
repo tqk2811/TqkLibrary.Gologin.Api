@@ -34,6 +34,8 @@ namespace TqkLibrary.Gologin.Api
 
         public static ProfileConfig ConvertToProfileConfig(this FingerprintResponse fingerprintResponse)
         {
+            if (fingerprintResponse is null) throw new ArgumentNullException(nameof(fingerprintResponse));
+
             ProfileConfig profileConfig = new ProfileConfig();
             profileConfig.Navigator = fingerprintResponse.Navigator;
             profileConfig.Canvas = fingerprintResponse.Canvas;
@@ -44,17 +46,23 @@ namespace TqkLibrary.Gologin.Api
             profileConfig.ClientRects = fingerprintResponse.ClientRects;
             profileConfig.WebglParams = fingerprintResponse.WebglParams;
             profileConfig.Os = fingerprintResponse.Os;
+            profileConfig.DevicePixelRatio = fingerprintResponse.DevicePixelRatio;
             profileConfig.Fonts = new Fonts()
             {
                 Families = fingerprintResponse.Fonts,
+                EnableMasking = true,
+                EnableDomRect = true,
             };
 
             //profileConfig.Navigator.DeviceMemory = profileConfig.Navigator.DeviceMemory * 1024;
-            profileConfig.WebGLMetadata.Mode = profileConfig.WebGLMetadata.Mode == WebGLMetadataMode.noise ? WebGLMetadataMode.mask : WebGLMetadataMode.off;
-            profileConfig.WebRTC.Mode = WebRTCMode.alerted;
+            if (profileConfig.WebGLMetadata is not null)
+                profileConfig.WebGLMetadata.Mode = profileConfig.WebGLMetadata.Mode == WebGLMetadataMode.noise ? WebGLMetadataMode.mask : WebGLMetadataMode.off;
+            if (profileConfig.WebRTC is not null)
+                profileConfig.WebRTC.Mode = WebRTCMode.alerted;
 
             profileConfig.BrowserType = "chrome";
             profileConfig.GoogleServicesEnabled = false;
+            if ("win".Equals(profileConfig.Os)) profileConfig.IsM1 = false;
             profileConfig.LockEnabled = false;
             profileConfig.DebugMode = false;
             profileConfig.Storage = new Storage()
@@ -67,8 +75,17 @@ namespace TqkLibrary.Gologin.Api
                 Session = true,
             };
             profileConfig.ProxyEnabled = false;
-            profileConfig.Proxy = null;
-            profileConfig.Dns = "8.8.8.8";
+            profileConfig.Proxy = new Proxy()
+            {
+                AutoProxyRegion = "us",
+                Host = String.Empty,
+                Mode = "none",
+                Password = String.Empty,
+                Port = 80,
+                TorProxyRegion = "us",
+                Username = String.Empty,                
+            };
+            profileConfig.Dns = "";
             profileConfig.Plugins = new Plugins()
             {
                 EnableFlash = false,
@@ -76,18 +93,46 @@ namespace TqkLibrary.Gologin.Api
             };
             profileConfig.Timezone = new Timezone()
             {
-                Enabled = false,
+                Enabled = true,
                 FillBasedOnIp = true,
+                TimeZone = String.Empty,
+            };
+            profileConfig.Plugins = new Plugins()
+            {
+                EnableFlash = true,
+                EnableVulnerable = true,
+            };
+
+            profileConfig.Geolocation = new Geolocation()
+            {
+                Mode = GeolocationMode.prompt,
+                Enabled = true,
+                FillBasedOnIp = true,
+                Customize = true,
+                Latitude = 0,
+                Longitude = 0,
+                Accuracy = 10,
+            };
+            profileConfig.Extensions = new Extension()
+            {
+                Enabled = true,
+                Names = new List<string>() { },
+                PreloadCustom = true,
             };
             profileConfig.AudioContext = new AudioContext()
             {
-                Mode = AudioContextMode.off,
-                Noise = 0
+                Mode = AudioContextMode.noise
             };
-            profileConfig.Profile = "ProfileAutoGenerate";
-            profileConfig.UpdateExtensions = false;
-            profileConfig.ChromeExtensions = new List<string>() { };
+            profileConfig.Cookies = new object[] { };
+            profileConfig.GoogleClientId = String.Empty;
+            //profileConfig.Profile = "ProfileAutoGenerate";
             profileConfig.Name = "ProfileAutoGenerate";
+            profileConfig.Notes = "ProfileAutoGenerate";
+            //profileConfig.UpdateExtensions = false;
+            //profileConfig.ChromeExtensions = new List<string>() { };
+
+            profileConfig.UserChromeExtensions = new List<string>() { };
+            profileConfig.UserChromeExtensionsToNewProfiles = new List<object>() { };
             return profileConfig;
         }
     }

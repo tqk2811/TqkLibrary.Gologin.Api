@@ -15,16 +15,22 @@ namespace TqkLibrary.Gologin.Api
         public List<GlParamValue> GlParamValues { get; set; }
 
         [JsonProperty("antialiasing")]
-        public bool Antialiasing { get; set; }
+        public bool? Antialiasing { get; set; }
 
         [JsonProperty("textureMaxAnisotropyExt")]
-        public int TextureMaxAnisotropyExt { get; set; }
+        public int? TextureMaxAnisotropyExt { get; set; }
 
         [JsonProperty("shaiderPrecisionFormat")]
         public string ShaiderPrecisionFormat { get; set; }
 
         [JsonProperty("extensions")]
         public List<string> Extensions { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"GlCanvas: {GlCanvas}, Antialiasing: {Antialiasing}, TextureMaxAnisotropyExt: {TextureMaxAnisotropyExt}, ShaiderPrecisionFormat: {ShaiderPrecisionFormat}";
+        }
     }
 
 }

@@ -5,10 +5,15 @@ namespace TqkLibrary.Gologin.Api
     public class Plugins
     {
         [JsonProperty("enableVulnerable")]
-        public bool EnableVulnerable { get; set; }
+        public bool EnableVulnerable { get; set; } = true;
 
         [JsonProperty("enableFlash")]
-        public bool EnableFlash { get; set; }
+        public bool EnableFlash { get; set; } = false;
+
+        public override string ToString()
+        {
+            return $"EnableVulnerable: {EnableVulnerable}, EnableFlash:{EnableFlash}";
+        }
     }
 
 }

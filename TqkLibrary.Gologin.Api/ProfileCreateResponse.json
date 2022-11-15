@@ -1,0 +1,49 @@
+{
+	"name": "ProfileAutoGenerate",
+	"role": "owner",
+	"id": "63736eab225551142025b332",
+	"notes": "ProfileAutoGenerate",
+	"browserType": "chrome",
+	"lockEnabled": false,
+	"timezone": {
+		"enabled": true,
+		"fillBasedOnIp": true,
+		"timezone": ""
+	},
+	"navigator": {
+		"hardwareConcurrency": 4,
+		"doNotTrack": false,
+		"deviceMemory": 8,
+		"maxTouchPoints": 10,
+		"userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.119 Safari/537.36",
+		"resolution": "1536x864",
+		"language": "en-US,en;q=0.9",
+		"platform": "Win32"
+	},
+	"geolocation": {
+		"mode": "prompt",
+		"enabled": true,
+		"customize": true,
+		"fillBasedOnIp": true,
+		"latitude": 0,
+		"longitude": 0,
+		"accuracy": 10
+	},
+	"debugMode": false,
+	"os": "win",
+	"proxy": {
+		"mode": "none",
+		"port": 80,
+		"autoProxyRegion": "us",
+		"torProxyRegion": "us",
+		"host": "",
+		"username": "",
+		"password": ""
+	},
+	"createdAt": "2022-11-15T10:49:15.290Z",
+	"updatedAt": "2022-11-15T10:49:15.290Z",
+	"chromeExtensions": [],
+	"userChromeExtensions": [],
+	"tags": [],
+	"proxyEnabled": false
+}
