@@ -40,7 +40,7 @@ while (true)
         }
 
         Console.WriteLine($"Get Profile Preferences");
-        GetProfilePreferences(profile.Id);
+        await GetProfilePreferences(profile.Id);
 
     }
     catch (GologinException ge)
@@ -97,16 +97,26 @@ bool CheckOrbita()
     return process.Count() > 0;
 }
 
-void GetProfilePreferences(string profileID)
+async Task GetProfilePreferences(string profileID)
 {
     string path = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "Temp\\GoLogin\\profiles",
         profileID,
         "Default\\Preferences");
+    FileInfo fileInfo = new FileInfo(path);
 
     if (File.Exists(path))
     {
+        while(true)
+        {
+            fileInfo.Refresh();
+            if (fileInfo.Length > 30 * 1024) //> 30KiB
+                break;
+            await Task.Delay(500);
+        }
+
+
         int i = 0;
         string fileName = string.Empty;
         do
