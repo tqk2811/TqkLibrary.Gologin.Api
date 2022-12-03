@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using TqkLibrary.Gologin.Api;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 //acc abasda2c
 #if DEBUG
 string access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzcxYTgxYzI2MGQ0YzJlNzY4OTJhM2YiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2MzcxYmFhZjQ0ZGY2ZmIyMTM5N2FhOGUifQ.ovMSCzT5u7Dileq2uDa5sHJHfieXLLTTKDFZTaQQyN8";
