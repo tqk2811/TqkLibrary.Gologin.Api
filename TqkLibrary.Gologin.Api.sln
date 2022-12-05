@@ -5,7 +5,13 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TqkLibrary.Gologin.Api", "TqkLibrary.Gologin.Api\TqkLibrary.Gologin.Api.csproj", "{E077A286-9596-4257-9C5B-59EA197BAD71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{4916F960-CCED-473A-BAC5-0AC0A42568E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{4916F960-CCED-473A-BAC5-0AC0A42568E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D5F2787-7D33-4739-A0F8-8A9FB0DB0DD2}"
+	ProjectSection(SolutionItems) = preProject
+		.exampleData\Preferences.json = .exampleData\Preferences.json
+		.exampleData\ProfileCreateResponse.json = .exampleData\ProfileCreateResponse.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
