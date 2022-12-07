@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using TqkLibrary.Gologin.Api.Enums;
 
 namespace TqkLibrary.Gologin.Api
 {
     public class Proxy
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("mode")]
-        public string Mode { get; set; } = "none";
+        public ProxyMode Mode { get; set; } = ProxyMode.none;
 
         [JsonProperty("host")]
         public string Host { get; set; } = string.Empty;

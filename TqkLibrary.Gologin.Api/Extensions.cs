@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TqkLibrary.Gologin.Api.Enums;
 
 namespace TqkLibrary.Gologin.Api
 {
@@ -79,11 +80,11 @@ namespace TqkLibrary.Gologin.Api
             {
                 AutoProxyRegion = "us",
                 Host = String.Empty,
-                Mode = "none",
+                Mode = ProxyMode.none,
                 Password = String.Empty,
                 Port = 80,
                 TorProxyRegion = "us",
-                Username = String.Empty,                
+                Username = String.Empty,
             };
             profileConfig.Dns = "";
             profileConfig.Plugins = new Plugins()
