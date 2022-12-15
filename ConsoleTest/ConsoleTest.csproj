@@ -12,4 +12,8 @@
 		<ProjectReference Include="..\TqkLibrary.Gologin.Api\TqkLibrary.Gologin.Api.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="System.Management" />
+	</ItemGroup>
+
 </Project>

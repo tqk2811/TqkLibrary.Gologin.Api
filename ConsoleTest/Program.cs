@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Management;
 using TqkLibrary.Gologin.Api;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 //acc abasda2c
 #if DEBUG
-string access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzcxYTgxYzI2MGQ0YzJlNzY4OTJhM2YiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2MzcxYmFhZjQ0ZGY2ZmIyMTM5N2FhOGUifQ.ovMSCzT5u7Dileq2uDa5sHJHfieXLLTTKDFZTaQQyN8";
+string access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzkxOGU4MjZlYjkwNDgyMGI4Y2UwZTciLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2MzkxOTE1NDM0NDJkYTFkNzVmMjgzZDIifQ.COrtpjHBjG3v7GvnWl36Yif_NCj_RdPkwK2nsIfZNIY";
 #else
 string access_token = args.FirstOrDefault();
 while (string.IsNullOrWhiteSpace(access_token))
@@ -29,11 +30,18 @@ while (true)
 
 
         ProfileConfig profileConfig = fingerprint.ConvertToProfileConfig();
+        //profileConfig.Proxy.Host = "127.0.0.1";
+        //profileConfig.Proxy.Host = "15625";
+        //profileConfig.Proxy.Username = "admin";
+        //profileConfig.Proxy.Password = "password123";
+        //profileConfig.Proxy.Mode = TqkLibrary.Gologin.Api.Enums.ProxyMode.http;
+
 
         Console.WriteLine("Profile.Create");
         profile = await gologinApi.Profile.Create(profileConfig);
 
-        while (!CheckOrbita())//wait until opening
+        profile = await gologinApi.Profile.Get(profile.Id);
+        while (!CheckOrbita(profile.Id))//wait until opening
         {
             Console.WriteLine($"LocalApi.StartProfile: {profile?.Id}");
             await gologinApi.LocalApi.StartProfile(profile.Id, true);
@@ -61,17 +69,40 @@ while (true)
     {
         if (!string.IsNullOrWhiteSpace(profile?.Id))
         {
-            while (CheckOrbita())//wait until closed
+            int loopCount = 0;
+            while (CheckOrbita(profile.Id))//wait until closed
             {
                 Console.WriteLine($"LocalApi.StopProfile");
-                await gologinApi.LocalApi.StopProfile(profile.Id);
-                await Task.Delay(1000);
+                try
+                {
+                    await gologinApi.LocalApi.StopProfile(profile.Id);
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.GetType().FullName}: {ex.Message}, {ex.StackTrace}");
+                }
+                await Task.Delay(500);
+                loopCount++;
+                if (loopCount > 10)
+                {
+                    KillProcess(GetProcessIdOrbita(profile.Id));
+                    await Task.Delay(500);
+                }
+                else await Task.Delay(500);
             }
 
             await Task.Delay(1000);
             Console.WriteLine($"Profile.Delete: {profile.Id}");
-            await gologinApi.Profile.Delete(profile.Id);
+            try
+            {
+                await gologinApi.Profile.Delete(profile.Id);
+            }
 
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.GetType().FullName}: {ex.Message}, {ex.StackTrace}");
+            }
             profile = null;
         }
         Console.WriteLine();
@@ -81,21 +112,41 @@ while (true)
 }
 
 //true  = opening
-bool CheckOrbita()
+bool CheckOrbita(string id)
 {
-    IEnumerable<Process> process = Process.GetProcessesByName("chrome");
-    process = process.Where(x =>
+    return GetProcessIdOrbita(id) != 0;
+}
+uint GetProcessIdOrbita(string id)
+{
+    try
     {
-        try
+        string wmiQuery = "select ProcessId,ExecutablePath,CommandLine from Win32_Process where Name='chrome.exe'";
+        using ManagementObjectSearcher searcher = new ManagementObjectSearcher(wmiQuery);
+        using ManagementObjectCollection retObjectCollection = searcher.Get();
+        foreach (ManagementObject retObject in retObjectCollection)
         {
-            return x.MainModule.FileName.IndexOf("orbita", StringComparison.OrdinalIgnoreCase) >= 0;
+            try
+            {
+                string ExecutablePath = retObject["ExecutablePath"].ToString();
+                string CommandLine = retObject["CommandLine"].ToString();
+                uint ProcessId = (uint)retObject["ProcessId"];
+                if (ExecutablePath.IndexOf("orbita", StringComparison.OrdinalIgnoreCase) >= 0 &&
+                    CommandLine.IndexOf(id, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return ProcessId;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.GetType().FullName}: {ex.Message}, {ex.StackTrace}");
+            }
         }
-        catch
-        {
-            return false;
-        }
-    }).ToList();
-    return process.Count() > 0;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"{ex.GetType().FullName}: {ex.Message}, {ex.StackTrace}");
+    }
+    return 0;
 }
 
 async Task GetProfilePreferences(string profileID)
@@ -109,7 +160,7 @@ async Task GetProfilePreferences(string profileID)
 
     if (File.Exists(path))
     {
-        while(true)
+        while (true)
         {
             fileInfo.Refresh();
             if (fileInfo.Length > 30 * 1024) //> 30KiB
@@ -134,6 +185,7 @@ async Task GetProfilePreferences(string profileID)
         Console.WriteLine($"Profile: {profileID}, Preferences not found");
     }
 }
+
 void SaveFingerprint(FingerprintResponse fingerprintResponse)
 {
     int i = 0;
@@ -146,4 +198,17 @@ void SaveFingerprint(FingerprintResponse fingerprintResponse)
     while (File.Exists(fileName));
 
     File.WriteAllText(fileName, JsonConvert.SerializeObject(fingerprintResponse));
+}
+
+void KillProcess(uint processId)
+{
+    Console.WriteLine($"Kill {processId}");
+    using Process process = Process.Start(new ProcessStartInfo()
+    {
+        FileName = "taskkill",
+        Arguments = $"/f /PID {processId}",
+        CreateNoWindow = true,
+        WindowStyle = ProcessWindowStyle.Hidden
+    });
+    process.WaitForExit();
 }
