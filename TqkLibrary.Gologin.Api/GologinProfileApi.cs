@@ -18,6 +18,7 @@ namespace TqkLibrary.Gologin.Api
     public interface IGologinProfileApi
     {
         Task<ProfileResponse> Create(ProfileConfig profileConfig, CancellationToken cancellationToken = default);
+        Task<ProfileResponse> Get(string id, CancellationToken cancellationToken = default);
         Task Delete(string profileId, CancellationToken cancellationToken = default);
     }
     internal class GologinProfileApi : IGologinProfileApi
@@ -31,6 +32,10 @@ namespace TqkLibrary.Gologin.Api
         public Task<ProfileResponse> Create(ProfileConfig profileConfig, CancellationToken cancellationToken = default)
         {
             return gologinApi.RequestPostJson<ProfileResponse>("/browser", profileConfig, cancellationToken);
+        }
+        public Task<ProfileResponse> Get(string id, CancellationToken cancellationToken = default)
+        {
+            return gologinApi.Request<ProfileResponse>(HttpMethod.Get, $"/browser/{id}", cancellationToken);
         }
         public Task Delete(string profileId, CancellationToken cancellationToken = default)
         {
