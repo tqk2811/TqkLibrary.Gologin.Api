@@ -136,5 +136,12 @@ namespace TqkLibrary.Gologin.Api
             profileConfig.UserChromeExtensionsToNewProfiles = new List<object>() { };
             return profileConfig;
         }
+
+
+
+        public static string GeneratePreferences(this ProfileResponse profileResponse)
+        {
+
+        }
     }
 }
