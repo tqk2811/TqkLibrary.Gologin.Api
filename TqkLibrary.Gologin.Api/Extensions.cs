@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TqkLibrary.Gologin.Api.Enums;
 
 namespace TqkLibrary.Gologin.Api
@@ -137,11 +134,5 @@ namespace TqkLibrary.Gologin.Api
             return profileConfig;
         }
 
-
-
-        public static string GeneratePreferences(this ProfileResponse profileResponse)
-        {
-
-        }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 namespace TqkLibrary.Gologin.Api
@@ -28,8 +23,8 @@ namespace TqkLibrary.Gologin.Api
         public Task StartProfile(string profileId, bool sync = true, CancellationToken cancellationToken = default)
         {
             return gologinApi.RequestPostJson(
-                $"http://localhost:{gologinApi.localPort}/browser/start-profile", 
-                new { profileId = profileId, sync = sync }, 
+                $"http://localhost:{gologinApi.localPort}/browser/start-profile",
+                new { profileId = profileId, sync = sync },
                 cancellationToken);
 
         }
