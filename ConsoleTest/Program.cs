@@ -22,5 +22,6 @@ using GologinApi gologinApi = new GologinApi(access_token);
 //await gologinApi.CrawlerAsync();
 
 var profiles = await gologinApi.Profile.GetAll.RequestAsync();
+await gologinApi.Local.StartProfile.RequestAsync(new ProfileStartQuery() { Id = profiles.Profiles!.First().Id, IsSync = true });
 
 Console.ReadLine();

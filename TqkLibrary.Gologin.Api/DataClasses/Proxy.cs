@@ -6,6 +6,9 @@ namespace TqkLibrary.Gologin.Api
 {
     public class Proxy
     {
+        [JsonProperty("id")]
+        public string? Id { get; set; }
+
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("mode")]
         public ProxyMode Mode { get; set; } = ProxyMode.none;
@@ -39,6 +42,9 @@ namespace TqkLibrary.Gologin.Api
 
         [JsonProperty("torProxyRegion")]
         public string? TorProxyRegion { get; set; }
+
+        [JsonProperty("customName")]
+        public string? CustomName { get; set; }
 
         public override string ToString()
         {

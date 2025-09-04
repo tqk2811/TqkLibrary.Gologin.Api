@@ -13,7 +13,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 		<PackageReference Include="TqkLibrary.CompilerServices" Version="1.0.0.3" />
 		<PackageReference Include="TqkLibrary.Net" Version="1.0.2-build20250827160243" />
 	</ItemGroup>
