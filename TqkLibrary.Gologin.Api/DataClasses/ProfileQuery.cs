@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using TqkLibrary.Gologin.Api.Interfaces;
 
 namespace TqkLibrary.Gologin.Api

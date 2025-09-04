@@ -15,5 +15,7 @@ namespace TqkLibrary.Gologin.Api.Interfaces
         BaseApiRequest<ProfileQuery, ProfileResponse> Get { get; }
 
         BaseApiRequest<ProfileQuery, ProfileDeleteResponse> Delete { get; }
+
+        BaseApiRequest<UpdateProxiesRequest, UpdateProxiesResponse> UpdateProxies { get; }
     }
 }

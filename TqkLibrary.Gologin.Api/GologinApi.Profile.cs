@@ -19,6 +19,7 @@ namespace TqkLibrary.Gologin.Api
                 this.Create = new CreateImplement(api);
                 this.Get = new GetImplement(api);
                 this.Delete = new DeleteImplement(api);
+                this.UpdateProxies = new UpdateProxiesImplement(api);
             }
 
             public BaseApiRequest<ProfileConfig, ProfileResponse> Create { get; }
@@ -28,6 +29,8 @@ namespace TqkLibrary.Gologin.Api
             public BaseApiRequest<ProfileQuery, ProfileDeleteResponse> Delete { get; }
 
             public BaseApiRequest<ProfileListResponse> GetAll { get; }
+
+            public BaseApiRequest<UpdateProxiesRequest, UpdateProxiesResponse> UpdateProxies { get; }
         }
     }
 }
