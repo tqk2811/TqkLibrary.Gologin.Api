@@ -23,22 +23,22 @@ namespace TqkLibrary.Gologin.Api
         public string Password { get; set; } = string.Empty;
 
         [JsonProperty("connectionType")]
-        public string ConnectionType { get; set; }
+        public string? ConnectionType { get; set; }
 
         [JsonProperty("trafficLimit")]
         public int? TrafficLimit { get; set; }
 
         [JsonProperty("trafficUsed")]
-        public string TrafficUsed { get; set; }
+        public string? TrafficUsed { get; set; }
 
         [JsonProperty("fakeProxyId")]
-        public string FakeProxyId { get; set; }
+        public string? FakeProxyId { get; set; }
 
         [JsonProperty("autoProxyRegion")]
-        public string AutoProxyRegion { get; set; } = "us";
+        public string? AutoProxyRegion { get; set; }
 
         [JsonProperty("torProxyRegion")]
-        public string TorProxyRegion { get; set; } = "us";
+        public string? TorProxyRegion { get; set; }
 
         public override string ToString()
         {

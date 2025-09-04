@@ -5,13 +5,13 @@ namespace TqkLibrary.Gologin.Api
     public class Timezone
     {
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; } = true;
+        public bool? Enabled { get; set; } = true;
 
         [JsonProperty("fillBasedOnIp")]
-        public bool FillBasedOnIp { get; set; } = true;
+        public bool? FillBasedOnIp { get; set; } = true;
 
         [JsonProperty("timezone")]
-        public string TimeZone { get; set; } = string.Empty;
+        public string? TimeZone { get; set; }
 
         public override string ToString()
         {

@@ -39,6 +39,7 @@ namespace TqkLibrary.Gologin.Api
         public virtual async Task<TResponse> RequestAsync(CancellationToken cancellationToken = default)
         {
             string data = await RequestRawAsync(cancellationToken);
+            DebugWriteJson(data);
             return JsonConvert.DeserializeObject<TResponse>(data, GologinSingleton.JsonSerializerSettings)!;
         }
         public abstract Task<string> RequestRawAsync(CancellationToken cancellationToken = default);
@@ -55,6 +56,7 @@ namespace TqkLibrary.Gologin.Api
         public virtual async Task<TResponse> RequestAsync(TRequest request, CancellationToken cancellationToken = default)
         {
             string data = await RequestRawAsync(request, cancellationToken);
+            DebugWriteJson(data);
             return JsonConvert.DeserializeObject<TResponse>(data, GologinSingleton.JsonSerializerSettings)!;
         }
         public abstract Task<string> RequestRawAsync(TRequest request, CancellationToken cancellationToken = default);

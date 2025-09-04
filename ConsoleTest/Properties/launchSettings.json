@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "ConsoleTest": {
+      "commandName": "Project"
+    },
+    "RemoteDebug": {
+      "commandName": "Project",
+      "remoteDebugEnabled": true,
+      "remoteDebugMachine": "DESKTOP-2COFU4V",
+      "authenticationMode": "Windows"
+    }
+  }
+}

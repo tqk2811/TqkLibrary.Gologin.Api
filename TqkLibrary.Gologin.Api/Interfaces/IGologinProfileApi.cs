@@ -8,6 +8,8 @@ namespace TqkLibrary.Gologin.Api.Interfaces
     /// </summary>
     public interface IGologinProfileApi
     {
+        BaseApiRequest<ProfileListResponse> GetAll { get; }
+
         BaseApiRequest<ProfileConfig, ProfileResponse> Create { get; }
 
         BaseApiRequest<ProfileQuery, ProfileResponse> Get { get; }

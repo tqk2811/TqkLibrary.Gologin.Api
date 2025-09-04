@@ -6,18 +6,20 @@
 		<TargetFramework>net8.0-windows7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<Configurations>Debug;Release;RemoteDebug</Configurations>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="$(Configuration) == 'RemoteDebug'">
+		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+		<BaseOutputPath>\\DESKTOP-2COFU4V\Csharp\$(AssemblyName)</BaseOutputPath>
+	</PropertyGroup>
+	
 	<ItemGroup>
-	  <PackageReference Include="System.Management" Version="9.0.8" />
+		<PackageReference Include="System.Management" Version="9.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\TqkLibrary.Gologin.Api\TqkLibrary.Gologin.Api.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Reference Include="System.Management" />
 	</ItemGroup>
 
 </Project>

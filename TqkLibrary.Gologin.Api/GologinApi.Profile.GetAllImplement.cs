@@ -8,18 +8,17 @@ namespace TqkLibrary.Gologin.Api
     {
         internal partial class ProfileApi
         {
-            class CreateImplement : BaseApiRequest<ProfileConfig, ProfileResponse>
+            class GetAllImplement : BaseApiRequest<ProfileListResponse>
             {
                 readonly GologinApi _api;
-                internal CreateImplement(GologinApi api)
+                internal GetAllImplement(GologinApi api)
                 {
                     this._api = api ?? throw new ArgumentNullException(nameof(api));
                 }
-
-                public override Task<string> RequestRawAsync(ProfileConfig request, CancellationToken cancellationToken = default)
+                public override Task<string> RequestRawAsync(CancellationToken cancellationToken = default)
                 {
                     return _api.Build()
-                        .WithUrlPostJson("https://api.gologin.com/browser", request)
+                        .WithUrlGet("https://api.gologin.com/browser/v2")
                         .ExecuteAsync<string>(cancellationToken);
                 }
             }

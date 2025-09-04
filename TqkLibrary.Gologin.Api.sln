@@ -17,16 +17,21 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		RemoteDebug|Any CPU = RemoteDebug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E077A286-9596-4257-9C5B-59EA197BAD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E077A286-9596-4257-9C5B-59EA197BAD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E077A286-9596-4257-9C5B-59EA197BAD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E077A286-9596-4257-9C5B-59EA197BAD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E077A286-9596-4257-9C5B-59EA197BAD71}.RemoteDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E077A286-9596-4257-9C5B-59EA197BAD71}.RemoteDebug|Any CPU.Build.0 = Debug|Any CPU
 		{4916F960-CCED-473A-BAC5-0AC0A42568E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4916F960-CCED-473A-BAC5-0AC0A42568E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4916F960-CCED-473A-BAC5-0AC0A42568E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4916F960-CCED-473A-BAC5-0AC0A42568E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4916F960-CCED-473A-BAC5-0AC0A42568E6}.RemoteDebug|Any CPU.ActiveCfg = RemoteDebug|Any CPU
+		{4916F960-CCED-473A-BAC5-0AC0A42568E6}.RemoteDebug|Any CPU.Build.0 = RemoteDebug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

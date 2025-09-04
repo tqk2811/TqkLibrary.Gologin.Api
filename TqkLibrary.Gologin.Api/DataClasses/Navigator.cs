@@ -5,16 +5,16 @@ namespace TqkLibrary.Gologin.Api
     public class Navigator
     {
         [JsonProperty("userAgent")]
-        public string UserAgent { get; set; }
+        public string? UserAgent { get; set; }
 
         [JsonProperty("resolution")]
-        public string Resolution { get; set; }
+        public string? Resolution { get; set; }
 
         [JsonProperty("language")]
-        public string Language { get; set; }
+        public string? Language { get; set; }
 
         [JsonProperty("platform")]
-        public string Platform { get; set; }
+        public string? Platform { get; set; }
 
         [JsonProperty("doNotTrack")]
         public bool? DoNotTrack { get; set; }
