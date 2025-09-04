@@ -1,18 +1,19 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using TqkLibrary.Gologin.Api.Interfaces;
 
 namespace TqkLibrary.Gologin.Api
 {
-    public partial class ProfileConfig
+    public partial class ProfileConfig : IDataRequest
     {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonProperty("notes")]
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
 
         [JsonProperty("browserType")]
-        public string BrowserType { get; set; }
+        public string? BrowserType { get; set; }
 
         [JsonProperty("devicePixelRatio")]
         public double? DevicePixelRatio { get; set; }
@@ -21,7 +22,7 @@ namespace TqkLibrary.Gologin.Api
         public bool IsM1 { get; set; } = false;
 
         [JsonProperty("os")]
-        public string Os { get; set; }
+        public string? Os { get; set; }
 
         [JsonProperty("startUrl")]
         public string StartUrl { get; set; } = "https://iphey.com/";
@@ -36,7 +37,7 @@ namespace TqkLibrary.Gologin.Api
         public bool DebugMode { get; set; } = false;
 
         [JsonProperty("navigator")]
-        public Navigator Navigator { get; set; }
+        public Navigator? Navigator { get; set; }
 
         [JsonProperty("geoProxyInfo")]
         public GeoProxyInfo GeoProxyInfo { get; set; } = new GeoProxyInfo();
@@ -63,28 +64,28 @@ namespace TqkLibrary.Gologin.Api
         public AudioContext AudioContext { get; set; } = new AudioContext();
 
         [JsonProperty("canvas")]
-        public Canvas Canvas { get; set; }
+        public Canvas? Canvas { get; set; }
 
         [JsonProperty("fonts")]
-        public Fonts Fonts { get; set; }
+        public Fonts? Fonts { get; set; }
 
         [JsonProperty("mediaDevices")]
-        public MediaDevices MediaDevices { get; set; }
+        public MediaDevices? MediaDevices { get; set; }
 
         [JsonProperty("webRTC")]
-        public WebRTC WebRTC { get; set; }
+        public WebRTC? WebRTC { get; set; }
 
         [JsonProperty("webGL")]
-        public WebGL WebGL { get; set; }
+        public WebGL? WebGL { get; set; }
 
         [JsonProperty("clientRects")]
-        public ClientRects ClientRects { get; set; }
+        public ClientRects? ClientRects { get; set; }
 
         [JsonProperty("webGLMetadata")]
-        public WebGLMetadata WebGLMetadata { get; set; }
+        public WebGLMetadata? WebGLMetadata { get; set; }
 
         [JsonProperty("webglParams")]
-        public WebglParams WebglParams { get; set; }
+        public WebglParams? WebglParams { get; set; }
 
         [JsonProperty("googleClientId")]
         public string GoogleClientId { get; set; } = string.Empty;

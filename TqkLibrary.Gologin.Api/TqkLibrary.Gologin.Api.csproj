@@ -1,24 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net462;netstandard2.0;net5.0;net6.0;net7.0</TargetFrameworks>
-		<LangVersion>10.0</LangVersion>
+		<TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+		<LangVersion>12.0</LangVersion>
+		<Nullable>enable</Nullable>
 		<PreserveCompilationContext>false</PreserveCompilationContext>
 		<GenerateDependencyFile>false</GenerateDependencyFile>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<!--<GenerateDocumentationFile>True</GenerateDocumentationFile>-->
 		<PathMap>$(MSBuildProjectDirectory)=$(MSBuildProjectName)</PathMap>
 		<AssemblyVersion>1.0.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
-		<PackageReference Include="System.Net.Http" Version="4.3.4" />
-	</ItemGroup>
-
-	<ItemGroup Condition="$(TargetFramework) == 'net462'">
-		<Reference Include="System.Web" />
+		<PackageReference Include="TqkLibrary.CompilerServices" Version="1.0.0.3" />
+		<PackageReference Include="TqkLibrary.Net" Version="1.0.2-build20250827160243" />
 	</ItemGroup>
 
 	<ItemGroup>

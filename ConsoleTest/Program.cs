@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Management;
 using TqkLibrary.Gologin.Api;
+using TqkLibrary.Gologin.Api.Exceptions;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 //acc abasda2c
@@ -25,7 +26,7 @@ while (true)
     try
     {
         Console.WriteLine("Fingerprint.GetNew");
-        var fingerprint = await gologinApi.Fingerprint.GetNew("win");
+        var fingerprint = await gologinApi.Fingerprint.GetNew.RequestAsync("win");
         SaveFingerprint(fingerprint);
 
 
@@ -38,13 +39,13 @@ while (true)
 
 
         Console.WriteLine("Profile.Create");
-        profile = await gologinApi.Profile.Create(profileConfig);
+        profile = await gologinApi.Profile.Create.RequestAsync(profileConfig);
 
-        profile = await gologinApi.Profile.Get(profile.Id);
-        while (!CheckOrbita(profile.Id))//wait until opening
+        profile = await gologinApi.Profile.Get.RequestAsync(profile!.Id);
+        while (!CheckOrbita(profile!.Id))//wait until opening
         {
             Console.WriteLine($"LocalApi.StartProfile: {profile?.Id}");
-            await gologinApi.LocalApi.StartProfile(profile.Id, true);
+            await gologinApi.Local.StartProfile.RequestAsync(new ProfileStartQuery() { Id = profile!.Id, IsSync = true });
             await Task.Delay(1000);
         }
 
@@ -75,7 +76,7 @@ while (true)
                 Console.WriteLine($"LocalApi.StopProfile");
                 try
                 {
-                    await gologinApi.LocalApi.StopProfile(profile.Id);
+                    await gologinApi.Local.StopProfile.RequestAsync(profile.Id);
                 }
 
                 catch (Exception ex)
@@ -96,7 +97,7 @@ while (true)
             Console.WriteLine($"Profile.Delete: {profile.Id}");
             try
             {
-                await gologinApi.Profile.Delete(profile.Id);
+                await gologinApi.Profile.Delete.RequestAsync(profile.Id);
             }
 
             catch (Exception ex)
@@ -127,11 +128,11 @@ uint GetProcessIdOrbita(string id)
         {
             try
             {
-                string ExecutablePath = retObject["ExecutablePath"].ToString();
-                string CommandLine = retObject["CommandLine"].ToString();
+                string? ExecutablePath = retObject["ExecutablePath"].ToString();
+                string? CommandLine = retObject["CommandLine"].ToString();
                 uint ProcessId = (uint)retObject["ProcessId"];
-                if (ExecutablePath.IndexOf("orbita", StringComparison.OrdinalIgnoreCase) >= 0 &&
-                    CommandLine.IndexOf(id, StringComparison.OrdinalIgnoreCase) >= 0)
+                if (ExecutablePath?.IndexOf("orbita", StringComparison.OrdinalIgnoreCase) >= 0 &&
+                    CommandLine?.IndexOf(id, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     return ProcessId;
                 }
@@ -203,12 +204,12 @@ void SaveFingerprint(FingerprintResponse fingerprintResponse)
 void KillProcess(uint processId)
 {
     Console.WriteLine($"Kill {processId}");
-    using Process process = Process.Start(new ProcessStartInfo()
+    using Process? process = Process.Start(new ProcessStartInfo()
     {
         FileName = "taskkill",
         Arguments = $"/f /PID {processId}",
         CreateNoWindow = true,
         WindowStyle = ProcessWindowStyle.Hidden
     });
-    process.WaitForExit();
+    process?.WaitForExit();
 }

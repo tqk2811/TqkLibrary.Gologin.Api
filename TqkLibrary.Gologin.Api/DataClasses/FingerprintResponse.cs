@@ -1,48 +1,49 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using TqkLibrary.Gologin.Api.Interfaces;
 
 namespace TqkLibrary.Gologin.Api
 {
-    public class FingerprintResponse
+    public class FingerprintResponse : IDataResponse
     {
         [JsonProperty("navigator")]
-        public Navigator Navigator { get; set; }
+        public Navigator? Navigator { get; set; }
 
         [JsonProperty("canvas")]
-        public Canvas Canvas { get; set; }
+        public Canvas? Canvas { get; set; }
 
         [JsonProperty("mediaDevices")]
-        public MediaDevices MediaDevices { get; set; }
+        public MediaDevices? MediaDevices { get; set; }
 
         [JsonProperty("webRTC")]
-        public WebRTC WebRTC { get; set; }
+        public WebRTC? WebRTC { get; set; }
 
         [JsonProperty("webGLMetadata")]
-        public WebGLMetadata WebGLMetadata { get; set; }
+        public WebGLMetadata? WebGLMetadata { get; set; }
 
         [JsonProperty("webglParams")]
-        public WebglParams WebglParams { get; set; }
+        public WebglParams? WebglParams { get; set; }
 
         [JsonProperty("webGL")]
-        public WebGL WebGL { get; set; }
+        public WebGL? WebGL { get; set; }
 
         [JsonProperty("clientRects")]
-        public ClientRects ClientRects { get; set; }
+        public ClientRects? ClientRects { get; set; }
 
         [JsonProperty("os")]
-        public string Os { get; set; }
+        public string? Os { get; set; }
 
         [JsonProperty("devicePixelRatio")]
         public double? DevicePixelRatio { get; set; }
 
         [JsonProperty("fonts")]
-        public List<string> Fonts { get; set; }
+        public List<string>? Fonts { get; set; }
 
         [JsonProperty("extensionsToNewProfiles")]
-        public List<object> ExtensionsToNewProfiles { get; set; }
+        public List<object>? ExtensionsToNewProfiles { get; set; }
 
         [JsonProperty("userExtensionsToNewProfiles")]
-        public List<object> UserExtensionsToNewProfiles { get; set; }
+        public List<object>? UserExtensionsToNewProfiles { get; set; }
     }
 
 }
