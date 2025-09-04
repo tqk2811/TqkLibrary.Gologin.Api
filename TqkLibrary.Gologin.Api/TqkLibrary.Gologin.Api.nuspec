@@ -10,30 +10,11 @@
 		<repository type="git" url="https://github.com/tqk2811/TqkLibrary.Adb.git"/>
 		<license type="expression">MIT</license>
 		<dependencies>
-			<group targetFramework="net462">
-				<dependency id="Newtonsoft.Json" version="13.0.1" />
-				<dependency id="System.Net.Http" version="4.3.4" />
-				<dependency id="System.IO.Compression" version="4.3.0" />
-			</group>
 			<group targetFramework="netstandard2.0">
-				<dependency id="Newtonsoft.Json" version="13.0.1" />
-				<dependency id="System.Net.Http" version="4.3.4" />
-				<dependency id="System.IO.Compression" version="4.3.0" />
+				<dependency id="TqkLibrary.Net" version="1.0.2-build20250827160243" />
 			</group>
-			<group targetFramework="net5.0">
-				<dependency id="Newtonsoft.Json" version="13.0.1" />
-				<dependency id="System.Net.Http" version="4.3.4" />
-				<dependency id="System.IO.Compression" version="4.3.0" />
-			</group>
-			<group targetFramework="net6.0">
-				<dependency id="Newtonsoft.Json" version="13.0.1" />
-				<dependency id="System.Net.Http" version="4.3.4" />
-				<dependency id="System.IO.Compression" version="4.3.0" />
-			</group>
-			<group targetFramework="net7.0">
-				<dependency id="Newtonsoft.Json" version="13.0.1" />
-				<dependency id="System.Net.Http" version="4.3.4" />
-				<dependency id="System.IO.Compression" version="4.3.0" />
+			<group targetFramework="net8.0">
+				<dependency id="TqkLibrary.Net" version="1.0.2-build20250827160243" />
 			</group>
 		</dependencies>
 	</metadata>
