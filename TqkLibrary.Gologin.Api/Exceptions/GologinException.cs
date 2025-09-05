@@ -20,6 +20,6 @@ namespace TqkLibrary.Gologin.Api.Exceptions
         }
 
         /// <inheritdoc/>
-        public override string Message => GologinError?.Message;
+        public override string Message => GologinError?.Message ?? string.Empty;
     }
 }

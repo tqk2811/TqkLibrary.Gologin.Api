@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TqkLibrary.Gologin.Api
+namespace TqkLibrary.Gologin.Api.DataClasses
 {
     public class SupportedFunction
     {

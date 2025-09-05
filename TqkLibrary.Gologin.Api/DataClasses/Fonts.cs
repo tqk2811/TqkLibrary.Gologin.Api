@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace TqkLibrary.Gologin.Api
+namespace TqkLibrary.Gologin.Api.DataClasses
 {
     public class Fonts
     {

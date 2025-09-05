@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
+using TqkLibrary.Gologin.Api.Enums;
 
-namespace TqkLibrary.Gologin.Api
+namespace TqkLibrary.Gologin.Api.DataClasses
 {
     public class WebRTC
     {

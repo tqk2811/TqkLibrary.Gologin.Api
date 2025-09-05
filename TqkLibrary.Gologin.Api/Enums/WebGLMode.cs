@@ -1,4 +1,4 @@
-﻿namespace TqkLibrary.Gologin.Api
+﻿namespace TqkLibrary.Gologin.Api.Enums
 {
     public enum WebGLMode
     {

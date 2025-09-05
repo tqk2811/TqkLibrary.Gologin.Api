@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TqkLibrary.Gologin.Api.Enums;
+using TqkLibrary.Gologin.Api.DataClasses;
 
 namespace TqkLibrary.Gologin.Api
 {

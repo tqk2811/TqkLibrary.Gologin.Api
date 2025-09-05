@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TqkLibrary.Gologin.Api;
 using TqkLibrary.Gologin.Api.Exceptions;
+using TqkLibrary.Gologin.Api.DataClasses;
 
 namespace ConsoleTest
 {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TqkLibrary.Gologin.Api.Enums;
 using TqkLibrary.Gologin.Api.Interfaces;
 
-namespace TqkLibrary.Gologin.Api
+namespace TqkLibrary.Gologin.Api.DataClasses
 {
     public class ProfileResponse : IDataResponse
     {

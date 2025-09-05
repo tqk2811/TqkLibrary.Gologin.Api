@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TqkLibrary.Gologin.Api.Interfaces;
 
-namespace TqkLibrary.Gologin.Api
+namespace TqkLibrary.Gologin.Api.DataClasses
 {
     public class UpdateProxiesRequest : IDataRequest
     {

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Management;
 using TqkLibrary.Gologin.Api;
+using TqkLibrary.Gologin.Api.DataClasses;
 using TqkLibrary.Gologin.Api.Exceptions;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;

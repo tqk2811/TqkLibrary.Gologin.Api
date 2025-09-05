@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using TqkLibrary.Gologin.Api.Enums;
 
-namespace TqkLibrary.Gologin.Api
+namespace TqkLibrary.Gologin.Api.DataClasses
 {
     public class WebGLMetadata
     {
@@ -10,10 +11,10 @@ namespace TqkLibrary.Gologin.Api
         public WebGLMetadataMode? Mode { get; set; }
 
         [JsonProperty("vendor")]
-        public string Vendor { get; set; }
+        public string? Vendor { get; set; }
 
         [JsonProperty("renderer")]
-        public string Renderer { get; set; }
+        public string? Renderer { get; set; }
 
 
         public override string ToString()

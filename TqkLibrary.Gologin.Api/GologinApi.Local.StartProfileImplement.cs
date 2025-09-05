@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using TqkLibrary.Gologin.Api.DataClasses;
 using TqkLibrary.Net;
 
 namespace TqkLibrary.Gologin.Api
