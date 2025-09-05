@@ -14,10 +14,10 @@ namespace TqkLibrary.Gologin.Api.DataClasses
         public ProxyMode? Mode { get; set; } = ProxyMode.none;
 
         [JsonProperty("host")]
-        public required string Host { get; set; }
+        public string? Host { get; set; }
 
         [JsonProperty("port")]
-        public required int Port { get; set; } = 80;
+        public int? Port { get; set; } = 80;
 
         [JsonProperty("username")]
         public string? Username { get; set; }
