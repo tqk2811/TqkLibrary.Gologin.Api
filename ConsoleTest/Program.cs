@@ -22,6 +22,22 @@ using GologinApi gologinApi = new GologinApi(access_token);
 //await gologinApi.CrawlerAsync();
 
 var profiles = await gologinApi.Profile.GetAll.RequestAsync();
+var proxys = await gologinApi.Profile.UpdateProxies.RequestAsync(new UpdateProxiesRequest()
+{
+    Proxies = [
+        new ProfileProxyUpdate()
+        {
+            ProfileId =profiles.Profiles.First().Id,
+            Proxy = new Proxy()
+            {
+                Host = "192.168.1.8",
+                Port = 28111,
+                Username = null,
+                Mode = TqkLibrary.Gologin.Api.Enums.ProxyMode.http,
+            }
+        }
+    ]
+});
 await gologinApi.Local.StartProfile.RequestAsync(new ProfileStartQuery() { Id = profiles.Profiles!.First().Id, IsSync = true });
 
 Console.ReadLine();

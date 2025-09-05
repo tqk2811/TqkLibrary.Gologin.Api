@@ -72,9 +72,9 @@ namespace TqkLibrary.Gologin.Api
 
 
 
-        protected override Task OnAfterRequestAsync(HttpResponseMessage httpResponseMessage)
+        protected override async Task OnAfterRequestAsync(HttpResponseMessage httpResponseMessage)
         {
-            return HandleError(httpResponseMessage);
+            await HandleError(httpResponseMessage);
         }
 
 

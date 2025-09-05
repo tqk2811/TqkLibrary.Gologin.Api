@@ -11,19 +11,19 @@ namespace TqkLibrary.Gologin.Api
 
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("mode")]
-        public ProxyMode Mode { get; set; } = ProxyMode.none;
+        public ProxyMode? Mode { get; set; } = ProxyMode.none;
 
         [JsonProperty("host")]
-        public string Host { get; set; } = string.Empty;
+        public required string Host { get; set; }
 
         [JsonProperty("port")]
-        public int Port { get; set; } = 80;
+        public required int Port { get; set; } = 80;
 
         [JsonProperty("username")]
-        public string Username { get; set; } = string.Empty;
+        public string? Username { get; set; }
 
         [JsonProperty("password")]
-        public string Password { get; set; } = string.Empty;
+        public string? Password { get; set; }
 
         [JsonProperty("connectionType")]
         public string? ConnectionType { get; set; }

@@ -25,10 +25,10 @@ namespace TqkLibrary.Gologin.Api
         public string? Os { get; set; }
 
         [JsonProperty("startUrl")]
-        public string StartUrl { get; set; } = "https://iphey.com/";
+        public string? StartUrl { get; set; } = "https://iphey.com/";
 
         [JsonProperty("googleServicesEnabled")]
-        public bool GoogleServicesEnabled { get; set; } = false;
+        public bool? GoogleServicesEnabled { get; set; }
 
         [JsonProperty("lockEnabled")]
         public bool LockEnabled { get; set; } = false;
@@ -40,28 +40,28 @@ namespace TqkLibrary.Gologin.Api
         public Navigator? Navigator { get; set; }
 
         [JsonProperty("geoProxyInfo")]
-        public GeoProxyInfo GeoProxyInfo { get; set; } = new GeoProxyInfo();
+        public GeoProxyInfo? GeoProxyInfo { get; set; }
 
         [JsonProperty("storage")]
-        public Storage Storage { get; set; } = new Storage();
+        public Storage? Storage { get; set; }
 
         [JsonProperty("proxyEnabled")]
-        public bool ProxyEnabled { get; set; } = false;
+        public bool? ProxyEnabled { get; set; } = false;
 
         [JsonProperty("proxy")]
-        public Proxy Proxy { get; set; } = new Proxy();
+        public Proxy? Proxy { get; set; }
 
         [JsonProperty("dns")]
-        public string Dns { get; set; } = string.Empty;
+        public string? Dns { get; set; }
 
         [JsonProperty("plugins")]
-        public Plugins Plugins { get; set; } = new Plugins();
+        public Plugins? Plugins { get; set; }
 
         [JsonProperty("timezone")]
-        public Timezone Timezone { get; set; } = new Timezone();
+        public Timezone? Timezone { get; set; }
 
         [JsonProperty("audioContext")]
-        public AudioContext AudioContext { get; set; } = new AudioContext();
+        public AudioContext? AudioContext { get; set; }
 
         [JsonProperty("canvas")]
         public Canvas? Canvas { get; set; }
@@ -88,7 +88,7 @@ namespace TqkLibrary.Gologin.Api
         public WebglParams? WebglParams { get; set; }
 
         [JsonProperty("googleClientId")]
-        public string GoogleClientId { get; set; } = string.Empty;
+        public string? GoogleClientId { get; set; }
 
         [JsonProperty("updateExtensions")]
         public bool? UpdateExtensions { get; set; }
@@ -100,19 +100,19 @@ namespace TqkLibrary.Gologin.Api
         //public List<string> ChromeExtensionsToAllProfiles { get; set; }
 
         [JsonProperty("userChromeExtensions")]
-        public List<string> UserChromeExtensions { get; set; } = new List<string>() { };
+        public List<string>? UserChromeExtensions { get; set; }
 
         [JsonProperty("userChromeExtensionsToNewProfiles")]
-        public List<object> UserChromeExtensionsToNewProfiles { get; set; } = new List<object>() { };
+        public List<object>? UserChromeExtensionsToNewProfiles { get; set; }
 
         [JsonProperty("geolocation")]
-        public Geolocation Geolocation { get; set; } = new Geolocation();
+        public Geolocation? Geolocation { get; set; }
 
         [JsonProperty("cookies")]
-        public object[] Cookies { get; set; } = new object[] { };
+        public object[]? Cookies { get; set; }
 
         [JsonProperty("extensions")]
-        public Extension Extensions { get; set; } = new Extension();
+        public Extension? Extensions { get; set; }
 
         public override string ToString()
         {
